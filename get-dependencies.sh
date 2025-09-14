@@ -40,6 +40,7 @@ sed -i -e 's|EUID == 0|EUID == 69|g' /usr/bin/makepkg
 sed -i -e 's|MAKEFLAGS=.*|MAKEFLAGS="-j$(nproc)"|; s|#MAKEFLAGS|MAKEFLAGS|' /etc/makepkg.conf
 git clone https://aur.archlinux.org/clementine.git ./clementine
 cd ./clementine
+sed -i -e "s|x86_64|$ARCH|" ./PKGBUILD
 makepkg -fs --noconfirm
 ls -la .
 pacman --noconfirm -U ./*.pkg.tar.*
